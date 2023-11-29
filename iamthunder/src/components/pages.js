@@ -5,7 +5,6 @@ import Intro from '../pages/intro';
 import Board from '../pages/board';
 import Diary from '../pages/diary';
 import Write from "../pages/write";
-import Detail from "../pages/detail";
 
 function Pages() {
   const location = useLocation();
@@ -15,7 +14,6 @@ function Pages() {
   {location.pathname === '/write' && <Write/>}
   {location.pathname.split('/')[1] === 'diary' && <Diary/>}
   {location.pathname.split('/')[1] === 'board' && <Board/>}
-  {location.pathname === '/detail' && <Detail/>}
   </div>;
 }
 

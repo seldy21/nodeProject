@@ -57,30 +57,38 @@ app.get("/diary/story", async (req, res) => {
 
   try {
     const cursor = await post
-      .find({})
+      .find({ category: "story" })
       .sort({ created_at: -1 })
       .skip(skipValue)
       .limit(8)
       .toArray();
 
     const index = await counter.findOne({ name: "게시물 개수" });
-
-    res.send({ posts: cursor, total_length: index.totalPost });
+    console.log(index.totalPost)
+    Promise.all([cursor, index]).then(()=>{
+      res.send({ posts: cursor, total_length: index.totalPost });
+    })
   } catch (err) {
     console.log(err);
   }
-  // try {
-  //   const cursor = await post.find().toArray();
-  //   res.send({ posts: cursor });
-  // } catch (error) {
-  //   console.error("Error fetching data from MongoDB:", error);
-  //   res.status(500).send("Internal Server Error");
-  // }
 });
 
 app.get("/diary/overcome", async (req, res) => {
   await client.connect();
   res.send({ posts: [{ _id: 1, title: "더미데이터" }] });
+});
+
+app.get("/diary/detail", async (req, res) => {
+  await client.connect();
+
+  const _id = req.query.id;
+
+  try {
+    const cursor = await post.findOne({ _id: _id });
+    res.send({ data: cursor });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.post("/write", async (req, res) => {
