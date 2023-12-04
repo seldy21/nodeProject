@@ -172,6 +172,10 @@ nav ul li {
   height: calc(100% - 64px)!important;
 }
 
+.ql-editor{
+  font-size: 1rem;
+}
+
 .form-select{
   box-shadow: none!important;
 }
@@ -371,4 +375,118 @@ button{
   .postWrapper{
     height: 95vh;
   }
+
+  .showMoreBtn{
+    background-color: rgb(182, 204, 182);
+    padding: 0.7rem 6rem;
+    border-radius: 20px;
+    transition: .5s;
+  }
+
+  .showMoreBtn:hover{
+    background-color: rgb(168, 255, 168);
+  }
+
+
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  padding: 0.7rem 5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #a7a7a7;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+/* .blob-btn:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 6px solid #0fe0f5;
+} */
+/* .blob-btn:after {
+  content: "";
+  z-index: -2;
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  width: 100%;
+  height: 100%;
+  border: 6px solid #222;
+  transition: all 0.3s 0.2s;
+} */
+.blob-btn:hover {
+  color: #fff;
+}
+.blob-btn:hover:after {
+  transition: all 0.3s;
+  left: 0;
+  top: 0;
+}
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(182, 204, 182);
+  border-radius: 20px;
+}
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+.blob-btn__blob {
+  position: absolute;
+  top: 6px;
+  width: 25%;
+  height: 100%;
+  background: rgb(87, 255, 118);
+  border-radius: 100%;
+  transform: translate3d(0, 200%, 0) scale(2);
+  transition: transform 0.45s;
+}
+@supports (filter: url('#goo')) {
+  .blob-btn__blob {
+    transform: translate3d(0, 200%, 0) scale(2);
+  }
+}
+.blob-btn__blob:nth-child(1) {
+  left: 0%;
+  transition-delay: 0s;
+}
+.blob-btn__blob:nth-child(2) {
+  left: 30%;
+  transition-delay: 0.1s;
+}
+.blob-btn__blob:nth-child(3) {
+  left: 60%;
+  transition-delay: 0.2s;
+}
+.blob-btn__blob:nth-child(4) {
+  left: 90%;
+  transition-delay: 0.3s;
+}
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(2);
+}
+@supports (filter: url('#goo')) {
+  .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(2);
+  }
+}
 }

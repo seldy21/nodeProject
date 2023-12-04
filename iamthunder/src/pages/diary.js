@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { APIURL } from "../publicURL";
-import { IoIosClose } from "react-icons/io";
+import Detail from "./detail";
 
 function Diary() {
   const location = useLocation();
@@ -13,11 +13,14 @@ function Diary() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(1);
+  //더보기 버튼
   const [showMore, setShowMore] = useState(false);
+  //불러올 시 대기
   const [readMore, setReadMore] = useState(false);
 
   const getData = (page) => {
     setReadMore(true);
+    setShowMore(false);
     axios
       .get(`${APIURL}${path}?page=${page}`)
       .then((res) => {
@@ -58,8 +61,6 @@ function Diary() {
     changePage();
   }, [path]);
 
-  
-
   //detail
   const defaultDetail = {
     show: false,
@@ -72,14 +73,14 @@ function Diary() {
   };
 
   const getDetailData = (id) => {
+    setShowDetail({
+      ...showDetail,
+      show: true,
+    });
     axios
       .get(`${APIURL}/diary/detail?id=${id}`)
       .then((res) => {
         console.log(res);
-        setShowDetail({
-          ...showDetail,
-          show: true,
-        });
       })
       .catch((err) => {
         console.log(err);
@@ -108,25 +109,34 @@ function Diary() {
           </div>
           <div className="pagination_wrapper">
             {showMore && (
+              // <button
+              //   onClick={() => {
+              //     getData(index);
+              //   }}
+              //   className="showMoreBtn"
+              // >
+              //   더보기
+              // </button>
               <button
+                class="blob-btn"
                 onClick={() => {
                   getData(index);
                 }}
               >
                 더보기
+                <span class="blob-btn__inner">
+                  <span class="blob-btn__blobs">
+                    <span class="blob-btn__blob"></span>
+                    <span class="blob-btn__blob"></span>
+                    <span class="blob-btn__blob"></span>
+                    <span class="blob-btn__blob"></span>
+                  </span>
+                </span>
               </button>
             )}
           </div>
-          <div className={`${showDetail.show ? "" : "h-0"} postWrapper`}>
-            <div className="postInner">
-              <div className="d-flex">
-                <IoIosClose
-                  className="ms-auto fs-1 pointer"
-                  onClick={hideContent}
-                />
-              </div>
-            </div>
-          </div>
+          {/* 디테일 */}
+          <Detail showDetail={showDetail} hideContent={hideContent} />
         </>
       )}
     </>
