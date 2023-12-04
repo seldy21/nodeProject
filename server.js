@@ -106,7 +106,7 @@ async function run() {
       const created_at = date + " " + time;
       const increase_count = await counter.updateOne(
         { name: "post" },
-        { $inc: { totalPost: 1 , poseSeq: 1 } },
+        { $inc: { totalPost: 1 , postSeq: 1 } },
       );
       const result = await post.insertOne({
         ...req.body,

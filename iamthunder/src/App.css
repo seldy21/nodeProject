@@ -19,22 +19,23 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 @font-face {
-  font-family: 'KOTRAHOPE';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+  font-family: "KOTRAHOPE";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
-body{
-  font-family: 'Noto Sans KR', sans-serif!important;
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
   letter-spacing: -0.03rem;
   /* font-weight: 500; */
 }
 
-header{
+header {
   width: 100%;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   background-color: #fff;
 }
 
@@ -43,13 +44,13 @@ h1 {
   margin: 0;
 }
 
-.logo_squirrel{
+.logo_squirrel {
   height: 50px;
   margin-right: 15px;
 }
 
-.full_container{
-  padding-top:82px;
+.full_container {
+  padding-top: 82px;
 }
 
 a {
@@ -125,11 +126,11 @@ nav ul li {
   width: 3px;
 }
 
-.contentWrapper{
-  padding: 2rem 1rem
+.contentWrapper {
+  padding: 2rem 1rem;
 }
 
-.list_grid{
+.list_grid {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(1, 1fr);
@@ -141,87 +142,91 @@ nav ul li {
   border-radius: 10px;
 }
 
-.myInput{
+.myInput {
   width: 100%;
   border: none;
   background-color: #efefef;
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   border-radius: 10px;
   outline: none;
 }
 
-.navIcons{
+.navIcons {
   width: 2rem;
   margin-right: 0.4rem;
 }
 
-.myBtn{
-  border:none;
+.myBtn {
+  border: none;
   background-color: #fcd303;
   padding: 0.3rem 2rem;
   border-radius: 10px;
   font-family: "KOTRAHOPE";
 }
 
-.quill{
+.quill {
   height: 58vh;
 }
 
-.ql-container{
-  height: calc(100% - 64px)!important;
+.ql-container {
+  height: calc(100% - 64px) !important;
 }
 
-.ql-editor{
+.ql-editor {
   font-size: 1rem;
 }
 
-.form-select{
-  box-shadow: none!important;
+.form-select {
+  box-shadow: none !important;
 }
 
-.form-select:focus{
-  border-color: var(--bs-border-color)!important;
+.form-select:focus {
+  border-color: var(--bs-border-color) !important;
 }
 
-.pagination_wrapper{
+.pagination_wrapper {
   display: flex;
   justify-content: center;
   gap: 0.7rem;
   margin-top: 1rem;
 }
 
-button{
+button {
   border: none;
   background-color: transparent;
 }
 
-.pagination_btn{
+.pagination_btn {
   color: #9c9c9c;
   border-radius: 3px;
   font-family: "KOTRAHOPE", sans-serif;
 }
 
-.postWrapper{
+.postWrapper {
   position: absolute;
   height: 98vh;
-  background-color: #e5e5e5;
+  background-color: #fdfae8;
   width: 100%;
   left: 0;
   z-index: 999;
   bottom: 0;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.h-0{
-  height: 0!important;
+.h-0 {
+  height: 0 !important;
   overflow: hidden;
 }
 
-.postInner{
+.postInner {
   padding: 30px;
+}
+
+.postContentWrapper p {
+  margin-bottom: 0.4rem;
 }
 
 @media (min-width: 768px) {
@@ -260,16 +265,20 @@ button{
     width: 100%;
   }
 
-  .contentWrapper{
-    padding: 2rem 3rem
+  .contentWrapper {
+    padding: 2rem 3rem;
   }
 
-  .list_grid{
+  .list_grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .ql-container{
-    height: calc(100% - 42px)!important;
+  .ql-container {
+    height: calc(100% - 42px) !important;
+  }
+
+  .postInner {
+    padding: 30px 30px 30px 50px;
   }
 }
 
@@ -308,17 +317,17 @@ button{
     display: none;
   }
 
-  .navIcons{
+  .navIcons {
     width: 1.5rem;
-    transition: .5s;
+    transition: 0.5s;
   }
 
-  .navItem:hover .navIcons{
+  .navItem:hover .navIcons {
     animation-name: hoverIcons;
     animation-iteration-count: 3;
-    animation-duration : .2s;
-    animation-direction : normal;
-    animation-timing-function:linear;
+    animation-duration: 0.2s;
+    animation-direction: normal;
+    animation-timing-function: linear;
   }
 
   @keyframes hoverIcons {
@@ -340,153 +349,152 @@ button{
     padding: 82px 0 0 13vw;
   }
 
-  .contentWrapper{
-    padding: 2rem 3.5rem
+  .contentWrapper {
+    padding: 2rem 3.5rem;
   }
-  
+
   nav ul {
     font-size: 1rem;
   }
 
-  .list_grid{
+  .list_grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .post_list{
+  .post_list {
     cursor: pointer;
   }
 
-  .myBtn{
+  .myBtn {
     cursor: pointer;
     background-color: rgb(245, 244, 193);
     padding: 0.5rem 2rem;
-    transition: .3s;
+    transition: 0.3s;
     font-size: 1.3rem;
   }
 
-  .myBtn:hover{
+  .myBtn:hover {
     background-color: #fcd303;
   }
 
-  .pointer{
+  .pointer {
     cursor: pointer;
   }
 
-  .postWrapper{
+  .postWrapper {
     height: 95vh;
   }
 
-  .showMoreBtn{
+  .showMoreBtn {
     background-color: rgb(182, 204, 182);
     padding: 0.7rem 6rem;
     border-radius: 20px;
-    transition: .5s;
+    transition: 0.5s;
   }
 
-  .showMoreBtn:hover{
+  .showMoreBtn:hover {
     background-color: rgb(168, 255, 168);
   }
 
-
-.blob-btn {
-  z-index: 1;
-  position: relative;
-  padding: 0.7rem 5rem;
-  margin-bottom: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #a7a7a7;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  transition: color 0.5s;
-  cursor: pointer;
-}
-/* .blob-btn:before {
-  content: "";
-  z-index: 1;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 6px solid #0fe0f5;
-} */
-/* .blob-btn:after {
-  content: "";
-  z-index: -2;
-  position: absolute;
-  left: 9px;
-  top: 9px;
-  width: 100%;
-  height: 100%;
-  border: 6px solid #222;
-  transition: all 0.3s 0.2s;
-} */
-.blob-btn:hover {
-  color: #fff;
-}
-.blob-btn:hover:after {
-  transition: all 0.3s;
-  left: 0;
-  top: 0;
-}
-.blob-btn__inner {
-  z-index: -1;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(182, 204, 182);
-  border-radius: 20px;
-}
-.blob-btn__blobs {
-  position: relative;
-  display: block;
-  height: 100%;
-  filter: url('#goo');
-}
-.blob-btn__blob {
-  position: absolute;
-  top: 6px;
-  width: 25%;
-  height: 100%;
-  background: rgb(87, 255, 118);
-  border-radius: 100%;
-  transform: translate3d(0, 200%, 0) scale(2);
-  transition: transform 0.45s;
-}
-@supports (filter: url('#goo')) {
-  .blob-btn__blob {
-    transform: translate3d(0, 200%, 0) scale(2);
+  .blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 0.7rem 5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #a7a7a7;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
   }
-}
-.blob-btn__blob:nth-child(1) {
-  left: 0%;
-  transition-delay: 0s;
-}
-.blob-btn__blob:nth-child(2) {
-  left: 30%;
-  transition-delay: 0.1s;
-}
-.blob-btn__blob:nth-child(3) {
-  left: 60%;
-  transition-delay: 0.2s;
-}
-.blob-btn__blob:nth-child(4) {
-  left: 90%;
-  transition-delay: 0.3s;
-}
-.blob-btn:hover .blob-btn__blob {
-  transform: translateZ(0) scale(2);
-}
-@supports (filter: url('#goo')) {
+  
+  .blob-btn:hover {
+    color: #fff;
+  }
+
+  .blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+  }
+
+  .blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(182, 204, 182);
+    border-radius: 20px;
+  }
+
+  .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url("#goo");
+  }
+
+  .blob-btn__blob {
+    position: absolute;
+    top: 6px;
+    width: 25%;
+    height: 100%;
+    background: rgb(87, 255, 118);
+    border-radius: 100%;
+    transform: translate3d(0, 200%, 0) scale(2);
+    transition: transform 0.45s;
+  }
+
+  @supports (filter: url("#goo")) {
+    .blob-btn__blob {
+      transform: translate3d(0, 200%, 0) scale(2);
+    }
+  }
+
+  .blob-btn__blob:nth-child(1) {
+    left: 0%;
+    transition-delay: 0s;
+  }
+
+  .blob-btn__blob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.1s;
+  }
+
+  .blob-btn__blob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.2s;
+  }
+
+  .blob-btn__blob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.3s;
+  }
+
   .blob-btn:hover .blob-btn__blob {
     transform: translateZ(0) scale(2);
   }
-}
+
+  @supports (filter: url("#goo")) {
+    .blob-btn:hover .blob-btn__blob {
+      transform: translateZ(0) scale(2);
+    }
+  }
+
+  .postInner {
+    padding: 50px 50px 50px 80px;
+  }
+
+  .postContentWrapper{
+    padding-top: 20px;
+    padding-right: 50px;
+  }
 }

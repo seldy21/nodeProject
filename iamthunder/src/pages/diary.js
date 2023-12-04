@@ -64,7 +64,9 @@ function Diary() {
   //detail
   const defaultDetail = {
     show: false,
+    title: null,
     content: null,
+    created_at: null
   };
   const [showDetail, setShowDetail] = useState(defaultDetail);
 
@@ -73,14 +75,17 @@ function Diary() {
   };
 
   const getDetailData = (id) => {
-    setShowDetail({
-      ...showDetail,
-      show: true,
-    });
     axios
       .get(`${APIURL}/diary/detail?id=${id}`)
       .then((res) => {
         console.log(res);
+        setShowDetail({
+          ...showDetail,
+          show: true,
+          title: res.data.data.title,
+          content: res.data.data.content,
+          created_at: res.data.data.created_at
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -109,27 +114,19 @@ function Diary() {
           </div>
           <div className="pagination_wrapper">
             {showMore && (
-              // <button
-              //   onClick={() => {
-              //     getData(index);
-              //   }}
-              //   className="showMoreBtn"
-              // >
-              //   더보기
-              // </button>
               <button
-                class="blob-btn"
+                className="blob-btn"
                 onClick={() => {
                   getData(index);
                 }}
               >
                 더보기
-                <span class="blob-btn__inner">
-                  <span class="blob-btn__blobs">
-                    <span class="blob-btn__blob"></span>
-                    <span class="blob-btn__blob"></span>
-                    <span class="blob-btn__blob"></span>
-                    <span class="blob-btn__blob"></span>
+                <span className="blob-btn__inner">
+                  <span className="blob-btn__blobs">
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
+                    <span className="blob-btn__blob"></span>
                   </span>
                 </span>
               </button>
