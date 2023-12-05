@@ -58,6 +58,10 @@ function Diary() {
   };
 
   useEffect(() => {
+    const id = location.search.split("=")[1];
+    if (location.search) {
+      getDetailData(id)
+    }
     changePage();
   }, [path]);
 
@@ -71,6 +75,7 @@ function Diary() {
   const [showDetail, setShowDetail] = useState(defaultDetail);
 
   const hideContent = () => {
+    navigator(`${path}`)
     setShowDetail(defaultDetail);
   };
 
@@ -79,6 +84,7 @@ function Diary() {
       .get(`${APIURL}/diary/detail?id=${id}`)
       .then((res) => {
         console.log(res);
+        navigator(`${path}?id=${id}`)
         setShowDetail({
           ...showDetail,
           show: true,

@@ -13,9 +13,10 @@ function Detail(props) {
         <div className="postContentWrapper">
           <h3>{showDetail.title}</h3>
           <div className="text-end">
-            {showDetail.created_at}
+            <span className="me-2">{showDetail.created_at}</span>
+
           </div>
-          <div dangerouslySetInnerHTML={{ __html: showDetail.content }}></div>
+          <div className="content_wrapper" dangerouslySetInnerHTML={{ __html: showDetail.content }}></div>
         </div>
       </div>
     </div>
