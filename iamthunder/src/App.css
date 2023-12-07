@@ -32,7 +32,7 @@ body {
   /* font-weight: 500; */
 }
 
-header {
+header.my_header {
   width: 100%;
   position: fixed;
   top: 0;
@@ -97,7 +97,7 @@ nav ul:nth-last-child(1) {
   padding-bottom: 15px;
 }
 
-nav ul::after {
+nav .nav_ul::after {
   content: "";
   width: 100%;
   border-bottom: 1px dashed #000;
@@ -271,6 +271,18 @@ button {
   flex-grow: 1;
 }
 
+nav .rc, .rc_root{
+  background-color: rgba(255,255,255,0.3)!important;
+}
+
+nav .rc_body-days-of-month .rc_body-cell .rc_body-cell_value{
+  border-radius: 50%;
+}
+
+nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
+  background-color: #c438c4;
+}
+
 @media (min-width: 768px) {
   .hamburgerMenu {
     font-size: 2.5rem;
@@ -352,7 +364,8 @@ button {
 
   nav,
   nav.hiddenNav {
-    width: 13vw;
+    width: 202px;
+    /* max-width: 278px; */
     top: 80px;
     height: calc(100% - 80px);
     position: fixed;
@@ -367,9 +380,16 @@ button {
     display: none;
   }
 
-  .navIcons {
+  .navItem {
     width: 1.5rem;
     transition: 0.5s;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px dashed #c4ad38;
+    border-width: 0;
+  }
+
+  .navItem:hover{
+    border-width: 100%;
   }
 
   .navItem:hover .navIcons {
@@ -396,7 +416,7 @@ button {
   }
 
   .full_container {
-    padding: 82px 0 0 13vw;
+    padding: 82px 0 0 202px;
   }
 
   .contentWrapper {

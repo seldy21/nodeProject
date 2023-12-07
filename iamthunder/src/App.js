@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="my_header">
         <div className="d-flex p-3 align-items-center">
           <h1
             className="mb-0 flex-grow-1 text-center"
@@ -57,6 +57,7 @@ function App() {
             navShow={navShow}
             setNavShow={setNavShow}
             isDesktopOrLaptop={isDesktopOrLaptop}
+            isTablet={isTablet}
           />
         </BrowserRouter>
       </div>

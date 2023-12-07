@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { NavMenu } from "../navMenu";
+import { Calendar } from "@natscale/react-calendar";
+
+import "@natscale/react-calendar/dist/main.css";
+import NavCalendar from "./navCalendar";
 
 function Nav(props) {
-  const { navShow, setNavShow, isDesktopOrLaptop } = props;
+  const { navShow, setNavShow, isDesktopOrLaptop, isTablet } = props;
   useEffect(() => {
     isDesktopOrLaptop && setNavShow(true);
   }, []);
@@ -19,7 +23,7 @@ function Nav(props) {
           }}
         />
         {NavMenu.map((item) => (
-          <ul key={`ul_${item.id}`}>
+          <ul key={`ul_${item.id}`} className="nav_ul">
             {item.list.map((list) => (
               <li key={`li_${list.id}}`}>
                 <Link
@@ -36,6 +40,9 @@ function Nav(props) {
             ))}
           </ul>
         ))}
+        <div className="d-flex w-100 justify-content-center">
+          <NavCalendar isDesktopOrLaptop={isDesktopOrLaptop} isTablet={isTablet} />
+        </div>
       </nav>
     </div>
   );

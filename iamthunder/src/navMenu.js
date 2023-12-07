@@ -12,7 +12,7 @@ export const NavMenu = [
         id: 2,
         name: "자기소개",
         path: "/intro",
-        icon: `/images/introIcon.svg`,
+        // icon: `/images/introIcon.svg`,
       },
     ],
   },
