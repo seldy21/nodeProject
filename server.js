@@ -44,6 +44,7 @@ async function run() {
       응답.sendFile(path.join(__dirname, "iamthunder/build/index.html"));
     });
 
+    //다이어리 가져오기
     app.get("/diary/story", async (req, res) => {
       await client.connect();
 
@@ -68,6 +69,7 @@ async function run() {
       }
     });
 
+    //울지말고 일어나 가져오기
     app.get("/diary/overcome", async (req, res) => {
       await client.connect();
       res.send({ posts: [{ _id: 1, title: "더미데이터" }] });
@@ -88,12 +90,13 @@ async function run() {
       }
     });
 
+    //포스팅하기
     app.post("/write", async (req, res) => {
       await client.connect();
 
       const index = await counter.findOne({ name: "post" });
 
-      console.log(index)
+      console.log(index);
 
       const TIME_ZONE = 9 * 60 * 60 * 1000; // 9시간
       const d = new Date();
@@ -106,7 +109,7 @@ async function run() {
       const created_at = date + " " + time;
       const increase_count = await counter.updateOne(
         { name: "post" },
-        { $inc: { totalPost: 1 , postSeq: 1 } },
+        { $inc: { totalPost: 1, postSeq: 1 } }
       );
       const result = await post.insertOne({
         ...req.body,
@@ -115,12 +118,29 @@ async function run() {
       });
     });
 
+    //달력 데이터 가져오기
+    app.get("/calendar/:month", async (req, res) => {
+      await client.connect();
+
+      console.log(req.params.month);
+      try {
+        const createIndex = await post.createIndex({ created_at: "text" });
+        const query = { $text: { $search: req.params.month } };
+        
+        const result = await post.find( { $text: { $search: "2023-12" } } );
+        console.log(result);
+        res.send({ data: result });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
     app.get("*", function (요청, 응답) {
       응답.sendFile(path.join(__dirname, "iamthunder/build/index.html"));
     });
   } finally {
     // Ensures that the client will close when you finish/error
-    // await client.close();
+    await client.close();
   }
 }
 

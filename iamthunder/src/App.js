@@ -17,7 +17,6 @@ function App() {
   const isTablet = useMediaQuery({
     query: "(min-width: 768px)",
   });
-
   return (
     <div className="App">
       <header className="my_header">

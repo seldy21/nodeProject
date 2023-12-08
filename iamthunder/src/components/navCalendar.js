@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Calendar } from "@natscale/react-calendar";
 import axios from "axios";
 import { APIURL } from "../publicURL";
@@ -31,7 +31,9 @@ const weekDaysLabel = {
 function NavCalendar(props) {
   const { isDesktopOrLaptop, isTablet } = props;
 
-  const [currentMonth, setCurrentMonth] = useState(`${new Date().getFullYear()}-${new Date().getMonth() + 1}`);
+  const [currentMonth, setCurrentMonth] = useState(
+    `${new Date().getFullYear()}-${new Date().getMonth() + 1}`
+  );
 
   const [dateValue, setDateValue] = useState();
   const onChange = useCallback(
@@ -42,8 +44,14 @@ function NavCalendar(props) {
   );
 
   const getCurrentMonthData = () => {
-    axios.get(`${APIURL}data/${currentMonth}`)
-  }
+    axios.get(`${APIURL}/calendar/${currentMonth}`).then((res) => {
+      console.log(res);
+    });
+  };
+
+  useEffect(() => {
+    getCurrentMonthData();
+  }, [currentMonth]);
   return (
     <Calendar
       value={dateValue}

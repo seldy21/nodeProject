@@ -2,7 +2,6 @@ import React, { useEffect, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { NavMenu } from "../navMenu";
-import { Calendar } from "@natscale/react-calendar";
 
 import "@natscale/react-calendar/dist/main.css";
 import NavCalendar from "./navCalendar";

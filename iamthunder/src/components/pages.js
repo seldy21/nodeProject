@@ -8,6 +8,7 @@ import Write from "../pages/write";
 
 function Pages() {
   const location = useLocation();
+
   return <div className="contentWrapper">
   {location.pathname === '/' && <Home/>}
   {location.pathname === '/intro' && <Intro/>}
