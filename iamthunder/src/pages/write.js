@@ -33,14 +33,14 @@ function Write() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // axios
-    //   .post(`${APIURL}/write`, data)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .post(`${APIURL}/write`, data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

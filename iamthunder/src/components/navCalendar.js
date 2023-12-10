@@ -38,20 +38,42 @@ function NavCalendar(props) {
   const [dateValue, setDateValue] = useState();
   const onChange = useCallback(
     (val) => {
+      console.log(val)
       setDateValue(val);
     },
     [setDateValue]
   );
 
-  const getCurrentMonthData = () => {
-    axios.get(`${APIURL}/calendar/${currentMonth}`).then((res) => {
-      console.log(res);
-    });
+  const [postingDate, setPostingDate] = useState([]);
+
+  const getCurrentMonthData = async () => {
+    try {
+      const res = await axios.get(`${APIURL}/calendar/${currentMonth}`);
+      const _data = res.data.postingData;
+      const new_data = _data.map((item) => ({
+        id: item._id,
+        created_at: parseInt(item.created_at.split(" ")[0].split("-")[2]),
+      }));
+      console.log(new_data);
+      setPostingDate(new_data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
+  const isDisabled = useCallback((date) => {
+    const _date = date.getDate();
+    
+    if (!postingDate.some((item) => item.created_at === _date)) {
+      return true;
+    }
+  }, [postingDate]);
+
   useEffect(() => {
+  
     getCurrentMonthData();
-  }, [currentMonth]);
+  }, []);
+
   return (
     <Calendar
       value={dateValue}
@@ -61,6 +83,7 @@ function NavCalendar(props) {
       weekends={[0]}
       weekDaysLabel={weekDaysLabel}
       monthsLabel={monthsLabel}
+      isDisabled={isDisabled}
     />
   );
 }
