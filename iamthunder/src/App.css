@@ -171,13 +171,13 @@ nav ul li {
   font-family: "KOTRAHOPE";
 }
 
-.fileBtn{
+.fileBtn {
   background-color: #c4ad38;
   padding: 0.2rem 1rem;
   color: #fff;
 }
 
-.previewWrapper{
+.previewWrapper {
   width: 80vw;
   background-color: #a7a7a7;
   aspect-ratio: 4/3;
@@ -186,7 +186,7 @@ nav ul li {
   align-items: center;
 }
 
-.infoText{
+.infoText {
   font-size: 12px;
 }
 
@@ -194,11 +194,11 @@ nav ul li {
   height: 58vh;
 }
 
-.quillWrapper{
+.quillWrapper {
   width: 100%;
 }
 
-.ql-toolbar.ql-snow{
+.ql-toolbar.ql-snow {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
@@ -267,20 +267,51 @@ button {
   padding-top: 20px;
 }
 
-.thumbnailWrapper{
+.thumbnailWrapper {
   flex-grow: 1;
 }
 
-nav .rc, .rc_root{
-  background-color: rgba(255,255,255,0.3)!important;
+nav .rc,
+.rc_root {
+  background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-nav .rc_body-days-of-month .rc_body-cell .rc_body-cell_value{
+nav .rc_body-days-of-month .rc_body-cell .rc_body-cell_value {
   border-radius: 50%;
 }
 
-nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
+nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value {
   background-color: #c438c4;
+}
+
+.react-datepicker {
+  width: 276px;
+  border: none;
+}
+
+.react-datepicker .react-datepicker__day--selected{
+  background: url(../public/images/dotori.svg) no-repeat transparent 70% / contain;
+}
+
+.react-datepicker .react-datepicker__day--selected:hover{
+  background-color: #bda115b3;
+}
+
+.react-datepicker__month-container {
+  width: 100%;
+}
+
+.react-datepicker .react-datepicker__header {
+  background-color: #fcd20389;
+}
+
+.dateLoadingWrapper{
+  position: absolute;
+  height: 98%;
+  width: 100%;
+  top:0;
+  background-color: #5f5f5f35;
+  z-index: 99;
 }
 
 @media (min-width: 768px) {
@@ -339,7 +370,7 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
     height: 150px;
   }
 
-  .previewWrapper{
+  .previewWrapper {
     width: 50vw;
   }
 }
@@ -364,7 +395,7 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
 
   nav,
   nav.hiddenNav {
-    width: 202px;
+    width: 252px;
     /* max-width: 278px; */
     top: 80px;
     height: calc(100% - 80px);
@@ -388,7 +419,7 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
     border-width: 0;
   }
 
-  .navItem:hover{
+  .navItem:hover {
     border-width: 100%;
   }
 
@@ -416,7 +447,7 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
   }
 
   .full_container {
-    padding: 82px 0 0 202px;
+    padding: 82px 0 0 252px;
   }
 
   .contentWrapper {
@@ -576,20 +607,39 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value{
     padding-right: 50px;
   }
 
-  .quillWrapper{
+  .quillWrapper {
     width: 75%;
   }
 
-  .writeArea{
+  .writeArea {
     display: flex;
-    gap: 1rem
+    gap: 1rem;
   }
 
-  .previewWrapper{
+  .previewWrapper {
     width: 100%;
   }
 
-  .thumbnailWrapper{
+  .thumbnailWrapper {
     width: 25%;
+  }
+
+  .react-datepicker {
+    width: 235px;
+  }
+
+  .react-datepicker__month {
+    margin: 0;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    margin: 0;
+  }
+
+  .navIcons {
+    width: 1.2rem;
+    margin-right: 0.4rem;
   }
 }

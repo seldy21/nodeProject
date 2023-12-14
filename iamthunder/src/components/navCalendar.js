@@ -2,89 +2,62 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Calendar } from "@natscale/react-calendar";
 import axios from "axios";
 import { APIURL } from "../publicURL";
+import DatePicker from "react-datepicker";
+import moment from 'moment';
 
-const monthsLabel = {
-  0: "일월",
-  1: "이월",
-  2: "삼월",
-  3: "사월",
-  4: "오월",
-  5: "유월",
-  6: "칠월",
-  7: "팔월",
-  8: "구월",
-  9: "시월",
-  10: "십일월😍",
-  11: "십이월",
-};
+import "react-datepicker/dist/react-datepicker.css";
 
-const weekDaysLabel = {
-  0: "일",
-  1: "월",
-  2: "화",
-  3: "수",
-  4: "목",
-  5: "금",
-  6: "토",
-};
+function NavCalendar() {
 
-function NavCalendar(props) {
-  const { isDesktopOrLaptop, isTablet } = props;
-
-  const [currentMonth, setCurrentMonth] = useState(
-    `${new Date().getFullYear()}-${new Date().getMonth() + 1}`
-  );
-
-  const [dateValue, setDateValue] = useState();
-  const onChange = useCallback(
-    (val) => {
-      console.log(val)
-      setDateValue(val);
-    },
-    [setDateValue]
-  );
+  const [loading, setLoading] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState(moment(new Date()).format("YYYY-MM"));
+  const [startDate, setStartDate] = useState(new Date());
 
   const [postingDate, setPostingDate] = useState([]);
 
+  const isWeekday = useCallback(
+    (date) => {
+      const _date = `${moment(date).format("YYYY-MM-DD")}`;
+
+      if (postingDate.find((item) => _date === item.created_at)) {
+        return _date;
+      }
+    },
+    [postingDate]
+  );
+
   const getCurrentMonthData = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(`${APIURL}/calendar/${currentMonth}`);
       const _data = res.data.postingData;
       const new_data = _data.map((item) => ({
         id: item._id,
-        created_at: parseInt(item.created_at.split(" ")[0].split("-")[2]),
+        created_at: item.created_at.split(" ")[0],
       }));
-      console.log(new_data);
+      setLoading(false);
       setPostingDate(new_data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const isDisabled = useCallback((date) => {
-    const _date = date.getDate();
-    
-    if (!postingDate.some((item) => item.created_at === _date)) {
-      return true;
-    }
-  }, [postingDate]);
-
   useEffect(() => {
-  
     getCurrentMonthData();
-  }, []);
+  }, [currentMonth]);
 
   return (
-    <Calendar
-      value={dateValue}
-      onChange={onChange}
-      size={isDesktopOrLaptop ? 192 : isTablet ? 371 : 276}
-      startOfWeek={0}
-      weekends={[0]}
-      weekDaysLabel={weekDaysLabel}
-      monthsLabel={monthsLabel}
-      isDisabled={isDisabled}
-    />
+    <div className="position-relative">
+    <div className={`dateLoadingWrapper ${loading ? '' : 'd-none'}`}>loading...</div>
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => {
+          setStartDate(date);
+        }}
+        filterDate={isWeekday}
+        inline
+      />
+    </div>
   );
 }
 

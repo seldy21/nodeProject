@@ -141,16 +141,6 @@ app.get("/calendar/:month", async (req, res) => {
   }
 
   res.send({ postingData: arr });
-
-  // try {
-  //   const createIndex = await post.createIndex({ created_at: "text" });
-  //   const query = { $text: { $search: req.params.month } };
-  //   const result = await post.find( { } ); //$text: { $search: "2023-12" }
-  //   console.log(result);
-  //   res.send({ data: result });
-  // } catch (err) {
-  //   console.log(err);
-  // }
 });
 
 app.get("*", function (요청, 응답) {
