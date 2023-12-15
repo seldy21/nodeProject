@@ -129,7 +129,7 @@ app.post("/write", async (req, res) => {
 app.get("/calendar/:month", async (req, res) => {
   await client.connect();
 
-  const this_month = req.params.month
+  const this_month = req.params.month;
   const cursor = post.find({
     created_at: { $regex: new RegExp(this_month) },
   });

@@ -1,3 +1,6 @@
+import { PiFlyingSaucerDuotone, PiGiftDuotone, PiMusicNotesDuotone, PiHeartBreakDuotone  } from "react-icons/pi";
+import { RiCss3Fill, RiHtml5Line, RiReactjsLine, RiJavascriptLine } from "react-icons/ri";
+
 export const NavMenu = [
   {
     id: 1,
@@ -6,13 +9,13 @@ export const NavMenu = [
         id: 1,
         name: "홈",
         path: "/",
-        icon: `/images/homeIcon.svg`,
+        icon: <PiFlyingSaucerDuotone className="navIcons"/>
       },
       {
         id: 2,
         name: "자기소개",
         path: "/intro",
-        // icon: `/images/introIcon.svg`,
+        icon:<PiGiftDuotone className="navIcons"/>,
       },
     ],
   },
@@ -23,13 +26,13 @@ export const NavMenu = [
         id: 1,
         name: "다이어리",
         path: "diary/story",
-        icon: "",
+        icon: <PiMusicNotesDuotone className="navIcons"/>,
       },
       {
         id: 2,
         name: "울지말고 일어나",
         path: "diary/overcome",
-        icon: "",
+        icon: <PiHeartBreakDuotone className="navIcons"/>,
       },
     ],
   },
@@ -40,25 +43,25 @@ export const NavMenu = [
         id: 1,
         name: "HTML",
         path: "/board/html",
-        icon: "",
+        icon: <RiHtml5Line className="navIcons"/>,
       },
       {
         id: 2,
         name: "CSS",
         path: "/board/css",
-        icon: "",
+        icon: <RiCss3Fill className="navIcons"/>,
       },
       {
         id: 3,
         name: "javascript",
         path: "/board/js",
-        icon: "",
+        icon: <RiJavascriptLine className="navIcons"/>,
       },
       {
         id: 4,
         name: "react",
         path: "/board/react",
-        icon: "",
+        icon: <RiReactjsLine className="navIcons"/>,
       },
     ],
   },

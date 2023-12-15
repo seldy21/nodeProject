@@ -3,14 +3,15 @@ import { Calendar } from "@natscale/react-calendar";
 import axios from "axios";
 import { APIURL } from "../publicURL";
 import DatePicker from "react-datepicker";
-import moment from 'moment';
+import moment from "moment";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 function NavCalendar() {
-
-  const [loading, setLoading] = useState(false);
-  const [currentMonth, setCurrentMonth] = useState(moment(new Date()).format("YYYY-MM"));
+  // const [loading, setLoading] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState(
+    moment(new Date()).format("YYYY-MM")
+  );
   const [startDate, setStartDate] = useState(new Date());
 
   const [postingDate, setPostingDate] = useState([]);
@@ -27,7 +28,6 @@ function NavCalendar() {
   );
 
   const getCurrentMonthData = async () => {
-    setLoading(true);
     try {
       const res = await axios.get(`${APIURL}/calendar/${currentMonth}`);
       const _data = res.data.postingData;
@@ -35,7 +35,7 @@ function NavCalendar() {
         id: item._id,
         created_at: item.created_at.split(" ")[0],
       }));
-      setLoading(false);
+      // setLoading(false);
       setPostingDate(new_data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -48,13 +48,16 @@ function NavCalendar() {
 
   return (
     <div className="position-relative">
-    <div className={`dateLoadingWrapper ${loading ? '' : 'd-none'}`}>loading...</div>
+      {/* <div className={`dateLoadingWrapper ${loading ? '' : 'd-none'}`}>loading...</div> */}
       <DatePicker
         selected={startDate}
         onChange={(date) => {
           setStartDate(date);
         }}
         filterDate={isWeekday}
+        onMonthChange={(date) => {
+          setCurrentMonth(moment(date).format("YYYY-MM"));
+        }}
         inline
       />
     </div>

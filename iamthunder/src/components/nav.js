@@ -32,7 +32,8 @@ function Nav(props) {
                   }}
                   className="navItem"
                 >
-                  <img src={list.icon} alt="" className="navIcons" />
+                  {/* <img src={list.icon} alt="" className="navIcons" /> */}
+                  {list.icon}
                   {list.name}
                 </Link>
               </li>

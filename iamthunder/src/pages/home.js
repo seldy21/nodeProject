@@ -1,9 +1,10 @@
 import React from "react";
+import "../css/home.css"
 
 function Home() {
   return (
     <>
-      <span>왜 데이터가 안들어갈까?</span>
+      <h3 className="home_title">길을 찾는 개발자</h3>
     </>
   );
 }

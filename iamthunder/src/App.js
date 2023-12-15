@@ -20,20 +20,22 @@ function App() {
   return (
     <div className="App">
       <header className="my_header">
-        <div className="d-flex p-3 align-items-center">
-          <h1
-            className="mb-0 flex-grow-1 text-center"
-            onClick={() => {
-              // navigate("/");
-            }}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/mySquirrel.svg`}
-              className="logo_squirrel"
-              alt=""
-            />
-            다다람지의 공간
-          </h1>
+        <div className="d-flex p-3 align-items-center justify-content-center">
+          <a href="/">
+            <h1
+              className="mb-0 flex-grow-1 text-center"
+              onClick={() => {
+                // navigate("/");
+              }}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/images/mySquirrel.svg`}
+                className="logo_squirrel"
+                alt=""
+              />
+              다다람지의 공간
+            </h1>
+          </a>
           <TiThMenu
             className="hamburgerMenu"
             onClick={() => {
@@ -51,6 +53,7 @@ function App() {
             <Route path="/diary/:category" element={<Pages />} />
             <Route path="/board/:category" element={<Pages />} />
             <Route path="/detail" element={<Pages />} />
+            <Route path="/search" element={<Pages />} />
           </Routes>
           <Nav
             navShow={navShow}
