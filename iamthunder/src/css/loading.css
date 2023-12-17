@@ -1,0 +1,76 @@
+
+.list_grid .more_area {
+  grid-column: 1/2;
+}
+
+.load {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*change these sizes to fit into your project*/
+  width: 100px;
+  height: 100px;
+}
+
+.load span {
+  border: 0;
+  margin: 0;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  /* border-radius: 50%; */
+  animation: spin 2s ease infinite;
+}
+
+.load :first-child {
+  background: url(../../public//images/broccoli.svg) no-repeat 100% / contain;
+  animation-delay: -1.5s;
+}
+.load :nth-child(2) {
+  background: url(../../public/images/squirrel_smile.svg) no-repeat 100% / contain;
+  animation-delay: -1s;
+}
+.load :nth-child(3) {
+  background: url(../../public/images/egg_flower.svg) no-repeat 100% / contain;
+  animation-delay: -0.5s;
+}
+.load :last-child {
+  background: url(../../public/images/dotori_border.svg) no-repeat 100% / contain;
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(160%);
+  }
+  50% {
+    transform: translate(160%, 160%);
+  }
+  75% {
+    transform: translate(0, 160%);
+  }
+}
+
+.more_area {
+  width: 100%;
+  min-height: 180px;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .list_grid .more_area {
+    grid-column: 1/3;
+  }
+}
+
+@media (min-width: 1299px) {
+  
+
+.list_grid .more_area {
+  grid-column: 1/5;
+}
+}

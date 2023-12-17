@@ -6,9 +6,12 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
-function NavCalendar() {
-  // const [loading, setLoading] = useState(false);
+function NavCalendar(props) {
+  const {isDesktopOrLaptop, isTablet, setNavShow } = props;
+  const navigator = useNavigate();
+
   const [currentMonth, setCurrentMonth] = useState(
     moment(new Date()).format("YYYY-MM")
   );
@@ -52,7 +55,9 @@ function NavCalendar() {
       <DatePicker
         selected={startDate}
         onChange={(date) => {
-          setStartDate(date);
+          setStartDate(date)
+          navigator(`/search?date=${moment(date).format("YYYY-MM-DD")}`);
+          setNavShow(false)
         }}
         filterDate={isWeekday}
         onMonthChange={(date) => {

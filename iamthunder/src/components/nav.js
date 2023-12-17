@@ -41,7 +41,7 @@ function Nav(props) {
           </ul>
         ))}
         <div className="d-flex w-100 justify-content-center">
-          <NavCalendar isDesktopOrLaptop={isDesktopOrLaptop} isTablet={isTablet} />
+          <NavCalendar isDesktopOrLaptop={isDesktopOrLaptop} isTablet={isTablet} setNavShow={setNavShow} />
         </div>
       </nav>
     </div>

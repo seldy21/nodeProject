@@ -143,6 +143,26 @@ app.get("/calendar/:month", async (req, res) => {
   res.send({ postingData: arr });
 });
 
+//특정 검색 데이터 가져오기 (날짜)
+app.get("/search", async(req, res)=>{
+  await client.connect();
+
+  const date = req.query.date;
+  
+  const cursor = post.find({
+    created_at: { $regex: new RegExp(date) },
+  });
+  
+  const arr = [];
+
+  for await (const doc of cursor) {
+    arr.push(doc);
+  }
+
+  res.send({searchData: arr})
+})
+
+
 app.get("*", function (요청, 응답) {
   응답.sendFile(path.join(__dirname, "iamthunder/build/index.html"));
 });

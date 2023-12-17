@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { APIURL } from "../publicURL";
 import Detail from "./detail";
+import Loading from "../components/loading";
 
 function Diary() {
   const location = useLocation();
@@ -27,7 +28,7 @@ function Diary() {
         setData((prevData) => [...prevData, ...res.data.posts]);
 
         const pages = Math.ceil(res.data.total_length / 8);
-        console.log(pages, "::", index);
+
         setShowMore(pages > index);
         setLoading(false);
         setIndex(index + 1);
@@ -60,7 +61,7 @@ function Diary() {
   useEffect(() => {
     const id = location.search.split("=")[1];
     if (location.search) {
-      getDetailData(id)
+      getDetailData(id);
     }
     changePage();
   }, [path]);
@@ -70,12 +71,12 @@ function Diary() {
     show: false,
     title: null,
     content: null,
-    created_at: null
+    created_at: null,
   };
   const [showDetail, setShowDetail] = useState(defaultDetail);
 
   const hideContent = () => {
-    navigator(`${path}`)
+    navigator(`${path}`);
     setShowDetail(defaultDetail);
   };
 
@@ -84,13 +85,13 @@ function Diary() {
       .get(`${APIURL}/diary/detail?id=${id}`)
       .then((res) => {
         console.log(res);
-        navigator(`${path}?id=${id}`)
+        navigator(`${path}?id=${id}`);
         setShowDetail({
           ...showDetail,
           show: true,
           title: res.data.data.title,
           content: res.data.data.content,
-          created_at: res.data.data.created_at
+          created_at: res.data.data.created_at,
         });
       })
       .catch((err) => {
@@ -101,7 +102,9 @@ function Diary() {
   return (
     <>
       {loading ? (
-        <>로딩중...</>
+        <div className="more_area">
+          <Loading />
+        </div>
       ) : (
         <>
           <div className="list_grid">
@@ -113,10 +116,15 @@ function Diary() {
                   getDetailData(item._id);
                 }}
               >
-                {item.title}
+                <div className="fw-bold">{item.title}</div>
+                <div className="date_text">{item.created_at}</div>
               </div>
             ))}
-            {readMore && <>불러오는중....</>}
+            {readMore && (
+              <div className="more_area">
+                <Loading />
+              </div>
+            )}
           </div>
           <div className="pagination_wrapper">
             {showMore && (

@@ -1,4 +1,3 @@
-
 body {
   font-family: "Noto Sans KR", sans-serif !important;
   letter-spacing: -0.03rem;
@@ -115,9 +114,13 @@ nav ul li {
   padding: 8px 16px;
   border-radius: 10px;
   height: 100px;
-  display: flex;
-  align-items: center;
-  font-weight: 700;
+  /* display: flex;
+  align-items: center; */
+  /* font-weight: 700; */
+}
+
+.date_text{
+  font-size: 10px;
 }
 
 .myInput {
@@ -262,11 +265,12 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value {
   border: none;
 }
 
-.react-datepicker .react-datepicker__day--selected{
-  background: url(../public/images/dotori.svg) no-repeat transparent 70% / contain;
+.react-datepicker .react-datepicker__day--selected {
+  background: url(../public/images/dotori.svg) no-repeat transparent 70% /
+    contain;
 }
 
-.react-datepicker .react-datepicker__day--selected:hover{
+.react-datepicker .react-datepicker__day--selected:hover {
   background-color: #bda115b3;
 }
 
@@ -278,13 +282,21 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value {
   background-color: #fcd20389;
 }
 
-.dateLoadingWrapper{
+.dateLoadingWrapper {
   position: absolute;
   height: 98%;
   width: 100%;
-  top:0;
+  top: 0;
   background-color: #5f5f5f35;
   z-index: 99;
+}
+
+.blob-btn{
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  background: rgb(33, 209, 66);
+  color: #fff;
 }
 
 @media (min-width: 768px) {
@@ -317,6 +329,7 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
+    z-index: 9;
   }
 
   .navBackground.show {
@@ -465,17 +478,6 @@ nav .rc_body-days-of-month .rc_body-cell.rc_selected .rc_body-cell_value {
 
   .postWrapper {
     height: 95vh;
-  }
-
-  .showMoreBtn {
-    background-color: rgb(182, 204, 182);
-    padding: 0.7rem 6rem;
-    border-radius: 20px;
-    transition: 0.5s;
-  }
-
-  .showMoreBtn:hover {
-    background-color: rgb(168, 255, 168);
   }
 
   .blob-btn {
