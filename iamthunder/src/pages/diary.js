@@ -46,6 +46,7 @@ function Diary() {
       .then((res) => {
         setData(res.data.posts);
 
+        console.log(res)
         const pages = Math.ceil(res.data.total_length / 8);
         console.log(pages, "::", index);
         setShowMore(pages > 1);

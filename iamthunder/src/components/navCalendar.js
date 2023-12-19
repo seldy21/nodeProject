@@ -30,24 +30,24 @@ function NavCalendar(props) {
     [postingDate]
   );
 
-  const getCurrentMonthData = async () => {
-    try {
-      const res = await axios.get(`${APIURL}/calendar/${currentMonth}`);
-      const _data = res.data.postingData;
-      const new_data = _data.map((item) => ({
-        id: item._id,
-        created_at: item.created_at.split(" ")[0],
-      }));
-      // setLoading(false);
-      setPostingDate(new_data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // const getCurrentMonthData = async () => {
+  //   try {
+  //     const res = await axios.get(`${APIURL}/calendar/${currentMonth}`);
+  //     const _data = res.data.postingData;
+  //     const new_data = _data.map((item) => ({
+  //       id: item._id,
+  //       created_at: item.created_at.split(" ")[0],
+  //     }));
+  //     // setLoading(false);
+  //     setPostingDate(new_data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getCurrentMonthData();
-  }, [currentMonth]);
+  // useEffect(() => {
+  //   getCurrentMonthData();
+  // }, [currentMonth]);
 
   return (
     <div className="position-relative">

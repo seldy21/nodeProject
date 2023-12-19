@@ -50,6 +50,11 @@ app.get("/", function (요청, 응답) {
   응답.sendFile(path.join(__dirname, "iamthunder/build/index.html"));
 });
 
+//로그인
+app.get("/login", async (req, res)=> {
+  await client.connect();
+})
+
 //다이어리 가져오기
 app.get("/diary/story", async (req, res) => {
   await client.connect();
