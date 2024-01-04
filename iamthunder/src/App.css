@@ -224,6 +224,7 @@ button {
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   transition: 0.5s;
+  overflow: auto;
 }
 
 .h-0 {
